@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice creating table and form</title>
+</head>
+<body>
+    <h1>Create form to express your feelings <br> about a favorite photo</h1>
+    <form action="" method="post" id="content-form">
+        <label for="name">Họ và tên: </label>
+        <input type="text" name="name" placeholder="Input your full name" size="30"><br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" placeholder="Email" size="30"><br>
+        <label for="theme">Chủ đề: </label>
+        <input type="text" name="theme" size="30"><br>
+        <label for="image">Img: </label>
+        <input type="file" name="image"><br>
+        <label for="content">Nội dung</label>
+        <textarea name="content" cols="30" rows="10"></textarea><br>
+        <button>Send</button>
+    </form>
+
+    <hr>
+
+    <h1>Account registration</h1>
+    <form action="" method="post">
+        <label for="username">Tên đăng nhập: </label>
+        <input type="text" name="username" id="username"><br>
+        <label for="password">Mật khẩu: </label>
+        <input type="password" name="password" id="password"><br>
+        <label for="confirm">Xác nhận mật khẩu: </label>
+        <input type="password" name="confirm" id="confirm"><br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" id="email"><br>
+        <label for="sex">Giới tính: </label>
+        <input type="radio" name="male" id="male"> Nam 
+        <input type="radio" name="female" id="female"> Nữ <br>
+        <button>Đăng ký</button>
+    </form>
+
+    <hr>
+    
+    <h1>Google search</h1>
+    <form action="https://www.google.co.jp/search?" method="get">
+        <input type="text" name="q">
+        <button>Search</button>
+    </form>
+    <br>
+
+    <hr>
+
+    <h1>Liên hệ</h1>
+    <form action="" method="post">
+        <label for="name">Họ và tên: </label>
+        <input type="text" name="name" placeholder="Input your full name" size="30"><br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" placeholder="Email" size="30"><br>
+        <label for="phone">Số điện thoại: </label>
+        <input type="text" name="phone" id="phone"><br>
+        <label for="theme">Chủ đề: </label>
+        <select name="theme" id="">
+            <option value="general">Tổng quan</option>
+            <option value="sales">Bán hàng</option>
+            <option value="support">Hỗ trợ</option>
+            <option value="partnership">Đối tác</option>
+        </select><br>
+        <label for="content">Nội dung: </label>
+        <textarea name="content" id="content" cols="30" rows="10"></textarea><br>
+        <input type="checkbox" name="receive" id="receive"> Nhận thông tin từ chúng tôi <br>
+        <button>Gửi</button>
+    </form>
+    <br>
+
+    <hr>
+
+    <h1>Bảng nhân viên</h1>
+    <table border="1">
+        <tr>
+            <th>Tên</th>
+            <th>Tuổi</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th>Lương</th>
+        </tr>
+        <tr>
+            <td>Nguyễn Văn A</td>
+            <td>30</td>
+            <td>Hà Nội</td>
+            <td>0987654321</td>
+            <td>10 triệu</td>
+        </tr>
+        <tr>
+            <td>Trần Thị B</td>
+            <td>25</td>
+            <td>Hồ Chí Minh</td>
+            <td>0123456789</td>
+            <td>8 triệu</td>
+        </tr>
+        <tr>
+            <td>Phạm Văn C</td>
+            <td>35</td>
+            <td>Đà Nẵng</td>
+            <td>0246892345</td>
+            <td>12 triệu</td>
+        </tr>
+    </table>
+    <br>
+
+    <hr>
+
+    <h1>Đội bóng đá</h1>
+    <table border="1">
+        <tr>
+            <th>Tên đội</th>
+            <th colspan="2">Sân nhà</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Tên sân nhà</td>
+            <td>Sức chứa</td> 
+        </tr>
+        <tr>
+            <td>Real Madrid</td>
+            <td>Santiago Bernabeu</td>
+            <td>81,044</td>
+        </tr>
+        <tr>
+            <td>Barcelona</td>
+            <td>Camp Nou</td>
+            <td>99,354</td>
+        </tr>
+        <tr>
+            <td>Manchester United</td>
+            <td>Old Trafford</td>
+            <td>74,879</td>
+        </tr>
+    </table>
+    <br>
+
+    <hr>
+
+    <h1>Danh sách sản phẩm</h1>
+    <table border="1">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Mô tả</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+        </tr>
+        <tr>
+            <td>Sản phẩm 1</td>
+            <td>Mô tả sản phẩm 1</td>
+            <td>100.00đ</td>
+            <td>50</td>
+        </tr>
+        <tr>
+            <td>Sản phẩm 2</td>
+            <td>Mô tả sản phẩm 2</td>
+            <td>200.00đ</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>Sản phẩm 3</td>
+            <td>Mô tả sản phẩm 3</td>
+            <td>300.00đ</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td colspan="4">Tổng số sản phẩm: 3</td>
+        </tr>
+    </table>
+    <br>
+
+    <hr>
+
+    <h1>Table with images</h1>
+    <table border="1">
+        <tr>
+            <td><img src="https://picsum.photos/200?random=1" alt="random photo"></td>
+            <td><img src="https://picsum.photos/200?random=2" alt="random photo"></td>
+            <td><img src="https://picsum.photos/200?random=3" alt="random photo"></td>
+        </tr>
+        <tr>
+            <td><img src="https://picsum.photos/200?random=4" alt="random photo"></td>
+            <td><img src="https://picsum.photos/200?random=5" alt="random photo"></td>
+            <td><img src="https://picsum.photos/200?random=6" alt="random photo"></td>
+        </tr>
+    </table>
+
+</body>
+</html>
