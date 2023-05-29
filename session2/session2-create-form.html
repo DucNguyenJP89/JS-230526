@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend><b>Personal Information Survey</b></legend>
+            <label for="firstName">First Name:</label><br>
+            <input type="text" name="first" id="firstName" /><br>
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" name="last" id="lastname" /><br>
+            <label for="password">Input password:</label><br>
+            <input type="password" name="password" id="password" /><br>
+            <label for="city">City</label><br>
+            <select name="city">
+                <option value="hn">Hanoi</option>
+                <option value="hp">Hai Phong</option>
+                <option value="dn">Da Nang</option>
+                <option value="hcm">Ho Chi Minh</option>
+                <option value="pq">Phu Quoc</option>
+            </select><br>
+            <label for="hobby">Hobbies</label><br>
+            <input type="checkbox" name="hobbie1" id="hobbie1" value="Travel">
+            <label for="hobbie1">Travel</label><br>
+            <input type="checkbox" name="hobbie2" id="hobbie2" value="Sports">
+            <label for="hobbie2">Sports</label><br>
+            <input type="checkbox" name="hobbie3" id="hobbie3" value="Cooking">
+            <label for="hobbie3">Cooking</label><br>
+            <label for="comment">Leave your comment:</label><br>
+            <textarea name="comment" id="" cols="30" rows="10"></textarea><br>
+            <input type="reset" value="reset">
+            <input type="submit" value="submit">
+        </fieldset>
+    </form>
+</body>
+<style>
+    form {
+        width: 800px;
+    }
+    legend {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    label, input, select {
+        margin-bottom: 10px;
+    }
+    input {
+        padding: 10px;
+    }
+    input[type=text], input[type=password] {
+        width: 50%;
+    }
+    textarea {
+        width: 400px;
+    }
+    select {
+        padding: 5px;
+    }
+</style>
+</html>
