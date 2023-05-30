@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tổng hợp Form và Table</title>
+</head>
+<body>
+    <div id="task1">
+        <h1>Bài 1: Form thông tin sản phẩm</h1>
+        <form action="" method="post">
+            <fieldset>
+                <legend>Thông tin sản phẩm</legend>
+                <label for="product">Tên sản phẩm: </label>
+                <input type="text" name="product" id="" size="30">
+                <label for="quantity">Số lượng: </label>
+                <input type="number" name="quantity" id="" size="5">
+            </fieldset>
+            <fieldset>
+                <legend>Thông tin giao hàng</legend>
+                <label for="name">Họ và tên: </label>
+                <input type="text" name="name" id="">
+                <label for="email">Email: </label>
+                <input type="email" name="email" id="">
+                <label for="phone">Số điện thoại: </label>
+                <input type="number" name="phone" id="">
+                <label for="address">Địa chỉ: </label>
+                <textarea name="address" id="" cols="30" rows="3"></textarea>
+            </fieldset>
+            <fieldset>
+                <legend>Thông tin thanh toán</legend>
+                <label for="payment">Phương thức thanh toán: </label>
+                <select name="payment" id="">
+                    <option value="cod">Thanh toán khi nhận hàng</option>
+                    <option value="transfer">Chuyển khoản ngân hàng</option>
+                    <option value="creditcard">Thẻ tín dụng</option>
+                </select>
+            </fieldset>
+           <input type="button" value="Đặt hàng" id="task1btn">
+        </form>
+    </div>
+    <hr>
+    <div id="task2">
+        <header>
+            <h1>Bài 2: Trang web bán hàng</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </nav>
+        <div>
+            <h2>Thông tin sản phẩm</h2>
+            <table border="1">
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Mô tả</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                </tr>
+                <tr>
+                    <td>Tên sản phẩm 1</td>
+                    <td>Mô tả sản phẩm 1</td>
+                    <td>100.000</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>Tên sản phẩm 2</td>
+                    <td>Mô tả sản phẩm 2</td>
+                    <td>200.000</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Tên sản phẩm 3</td>
+                    <td>Mô tả sản phẩm 3</td>
+                    <td>300.000</td>
+                    <td>3</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2>Thông tin người dùng</h2>
+            <div>
+                <form action="#" method="post">
+                    <label for="name">Họ và tên: </label>
+                    <input type="text" name="name" id="name" size="30"><br>
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="email"><br>
+                    <label for="phone">Số điện thoại: </label>
+                    <input type="number" name="phone" id="phone"><br>
+                    <label for="address">Địa chỉ: </label>
+                    <input type="text" name="address" id="address"><br>
+                    <input type="button" value="Đặt hàng" id="task2btn">
+                </form>
+            </div>
+        </div>
+        <footer>
+            <p>&#169;2023 Trang web bán hàng</p>
+        </footer>
+    </div>
+</body>
+<style>
+    form {
+        margin: 10px;
+    }
+    fieldset {
+        margin-bottom: 10px;
+    }
+    input, label {
+        margin-bottom: 10px;
+    }
+    #task1btn {
+        padding: 10px;
+        font-size: 16px;
+    }
+</style>
+</html>
