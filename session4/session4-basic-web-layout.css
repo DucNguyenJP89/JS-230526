@@ -1,0 +1,30 @@
+#left-panel {
+    display: block;
+    background-color: #f1f1f1;
+    width: 200px;
+    height: 1000px;
+    float: left;
+}
+
+#left-panel a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    margin-top: 20px;
+    padding: 20px 0;
+    padding-left: 20px;
+}
+#left-panel a.active {
+    background-color: #00c049;
+    color: #fff;
+}
+
+#main {
+    margin-left: 220px;
+    padding-top: 50px;
+}
+
+#main h1 {
+    margin-bottom: 40px;
+}
+
