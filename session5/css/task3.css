@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Raleway", sans-serif;
+}
+
+h2, h3 {
+    font-weight: 600;
+}
+
+h2 {
+    margin: 40px 0 10px 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 640px 480px;
+}
+
+#image {
+    padding: 40px;
+}
+
+img {
+    width: 100%;
+}
+
+#description {
+    color: #808080;
+    margin-bottom: 40px;
+    padding-right: 20px;
+}
+
+.list-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    margin: 0 20px;
+}
+
+.list-grid p {
+    margin: 10px;
+    color: #808080;
+}
+
+p > i {
+    color: #2384fa;
+}
+
+#divider {
+    width: 40px;
+    border: 2px solid #2384fa;
+    border-radius: 4px;
+}
