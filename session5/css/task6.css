@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Raleway:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 2.5rem auto;
+}
+
+form input,
+form textarea {
+    border: 1px solid #dadada;
+    border-radius: 5px;
+}
+
+form placeholder {
+    color: #7a7a7a;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
+    row-gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.form-grid input {
+    padding: 0.8rem 1rem;
+}
+
+.span2 {
+    grid-column-end: span 2;
+    padding: 0.8rem 1rem;
+}
+
+.form-grid p {
+    padding-top: 0;
+    text-align: right;
+    color: #7a7a7a;
+}
+
+.form-grid button {
+    width: fit-content;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #37a2ff;
+    color: #fff;
+}
+
+
+
