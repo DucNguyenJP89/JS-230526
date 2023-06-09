@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+p {
+    font-size: 14px;
+    color: #cbcbcb;
+}
+
+h3 {
+    color: #fffdfa;
+    font-weight: semibold;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr 0.8fr 0.5fr;
+    column-gap: 0.5rem;
+    padding: 2rem;
+    background-color: #202020;
+}
+
+.info .rectangle {
+    width: fit-content;
+    height: auto;
+    padding: 0.3rem 1.5rem;
+    margin: 1rem 0;
+    border: none;
+    background-color: #8797cb;
+    color: #fffdfa;
+}
+
+.info p {
+    width: 90%;
+    margin-top: 2.5rem;
+}
+
+.link div a {
+    display: block;
+    text-decoration: none;
+    color: #cbcbcb;
+    font-size: 14px;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #272727;
+}
+
+.link div a:hover {
+    font-weight: bold;
+    padding-left: 0.5rem;
+    color: #272727;
+    background-color: #8797cb;
+}
+
+.link div a:last-child,
+.contact div p:last-child,
+.social div p:last-child {
+    border-bottom: none;
+}
+
+.contact div {
+    width: 90%;
+}
+
+.contact div p,
+.social div p {
+    margin: 0;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #272727;
+}
+
+.social div i {
+    margin-right: 1rem;
+}
+
+.social div i.fb {
+    margin-right: 1.3rem;
+}
