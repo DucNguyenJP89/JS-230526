@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Raleway", sans-serif;
+}
+
+.footer-grid {
+    background-color: #315c69;
+    color: #fff;
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 2.5rem;
+}
+
+.footer-grid h3 {
+    font-weight: 400;
+    margin-bottom: 2rem;
+}
+
+.about-us p {
+    font-size: 0.8rem;
+    width: 80%;
+}
+
+.links div {
+    margin: 0 2.5rem;
+}
+
+.links p {
+    font-size: 0.8rem;
+    margin: 0.3rem;
+}
+
+.icon {
+    font-size: 0.3rem;
+}
+
+.follow-us div {
+    margin-left: 2.5rem;
+}
+
+.follow-us div button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+}
+
+.fb {
+    background-color: #4267B2;
+}
+
+.gp {
+    background-color: #DB4437;
+}
+
+.lk {
+    background-color: #0077B5;
+}
+
+.tw {
+    background-color: #1DA1F2;
+}
+
+.follow-us div i {
+    color: #fff;
+}
