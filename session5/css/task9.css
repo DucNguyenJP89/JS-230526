@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Source+Code+Pro:wght@200;300;400;700&family=Tilt+Prism&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Source Code Pro", monospace;
+}
+
+header {
+    width: 60%;
+    margin: 4rem auto;
+    text-align: center;
+}
+
+header h3 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.left-panel {
+    width: 20%;
+    margin: 0 3rem;
+    padding: 4rem;
+    float: left;
+    box-shadow: 5px 5px 20px 5px lightgrey;
+}
+
+.left-panel h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.extra-light {
+    font-weight: 200;
+}
+
+.signature {
+    font-weight: 600;
+}
+
+.name {
+    font-weight: 300;
+    font-size: 0.5rem;
+}
+
+.right-panel {
+    margin: 0 4rem;
+    padding: 0 4rem;
+}
+
+.right-panel p {
+    margin-bottom: 1.5rem;
+}
+
+.bolder {
+    font-weight: 700;
+}
+
