@@ -1,0 +1,90 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    padding: 5px 40px;
+    width: 100%;
+    background-color: #333b40;
+    color: #fff;
+}
+
+.album-example {
+    margin-bottom: 20px;
+    padding: 40px;
+    text-align: center;
+}
+
+.album-example h2 {
+    font-weight: 400;
+}
+
+.album-example p {
+    margin: 10px auto;
+    width: 60%;
+}
+
+.album-example button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.cta {
+    background-color: #24a0ed;
+}
+
+.secondary {
+    background-color: #333b40;
+}
+
+.list {
+    width: 95%;
+    margin: 10px auto;
+    padding: 20px 30px;
+    background-color: #cbcbcb;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.list .card {
+    width: 30%;
+    background-color: #fff;
+    margin: 20px;
+}
+
+.list .card img {
+    max-width: 100%;
+}
+
+.list .card p {
+    padding: 5px 10px;
+}
+
+.list .card div {
+    padding: 0 10px 10px 10px;
+}
+
+.list .card div span {
+    float: right;
+}
+
+.list .card div button {
+    margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .list {
+        width: 90%;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    .list .card {
+        width: 80%;
+    }
+}
