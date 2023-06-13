@@ -1,0 +1,357 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #edecec;
+    box-sizing: border-box;
+    height: 100vh;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif;
+}
+
+/* Style for header section */
+header {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Using display: flex to adjust header elements*/
+.flex-container {
+    display: flex;
+}
+
+header .flex-container .header-left {
+    width: 50%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+header .flex-container .header-left i {
+    color: #4267B2;
+    font-size: 24px;
+    padding: 0 20px;
+}
+
+header .flex-container .header-left .search-bar {
+    width: 90%;
+}
+
+header .flex-container .header-left .search-bar input {
+    width: 90%;
+    padding: 5px 10px;;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+}
+
+header .flex-container .header-left .search-bar i {
+    font-size: 14px;
+    color: #cbcbcb;
+    padding: 0;
+    position: relative;
+    right: 30px;
+}
+
+header .flex-container .header-left .search-bar i:hover {
+    color: #4267b2;
+}
+
+header .flex-container .header-right {
+    width: 50%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+}
+
+header .flex-container .header-right .avatar img {
+    border: none;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+header .flex-container .header-right div a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 300;
+    margin: 0 10px;
+}
+
+header .flex-container .header-right .icon-list {
+    margin-right: 20px;
+}
+
+header .flex-container .header-right .icon-list i {
+    margin: 0 10px;
+    color: #cbcbcb;
+}
+
+/* Main content with 2 sidebars and body*/
+.column {
+    float: left;
+    position: relative;
+    top: 60px;
+}
+
+/* Style left sidebar */
+.column.left {
+    height: 125vh;
+    width: 20%;
+    background-color: #f2f2f4;
+}
+
+.column.left .item-list {
+    margin: 40px 0px;
+}
+
+.column.left .item-list p {
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 40px;
+    margin-bottom: 0;
+}
+
+.column.left .item-list .item {
+    color: #808080;
+    font-size: 14px;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+.column.left .item-list .item.selected {
+    color: #000;
+    background-color: #fff;
+}
+
+/* Style main body */
+.column.main {
+    height: calc(100%-60px);
+    width: 50%;
+    overflow-y: auto;
+}
+
+.column.main::-webkit-scrollbar {
+    display: none;
+}
+
+/* Style post message block */
+.column.main .post-message {
+    width: 90%;
+    margin: 20px auto;
+    background-color: #fff;
+}
+
+.column.main .post-message .write {
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.column.main .post-message .write img {
+    float: left;
+    width: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.column.main .post-message .write textarea {
+    width: 80%;
+    height: 60px;
+    border: none;
+    padding: 10px;
+    padding-top: 20px;
+    resize: none;
+}
+
+.column.main .post-message .attach {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.column.main .post-message .attach i {
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+/* Style posts list */
+.column.main .list-post {
+    width: 90%;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.column.main .list-post .post {
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.column.main .list-post .post .user-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.column.main .list-post .post .user-profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.column.main .list-post .post .user-profile div {
+    margin: 0;
+    width: 70%;
+}
+
+.column.main .list-post .post .user-profile div p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.column.main .list-post .post .user-profile div span {
+    font-size: 10px;
+    color: #808080;
+}
+
+.column.main .list-post .post .user-profile i {
+    padding-left: 20px;
+    font-size: 20px;
+    color: #808080;
+}
+
+/* Style for each post content*/
+.column.main .list-post .post .content {
+    padding: 0 10px;
+}
+
+.column.main .list-post .post .content p {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: light;
+}
+
+.column.main .list-post .post .content .images-gallery {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column.main .list-post .post .content .images-gallery img {
+    width: 33%;
+    border-radius: 5px;
+}
+
+.column.main .list-post .post .content .comments {
+    display: flex;
+    padding: 10px 0px;
+    align-items: center;
+}
+
+.column.main .list-post .post .content .comments .item {
+    margin-right: 20px;
+    color: #808080;
+}
+
+.column.main .list-post .post .content .comments .item span {
+    font-size: 10px;
+}
+
+/* Style for the right sidebar */
+.column.right {
+    width: 30%;
+    height: 100vh;
+    background-color: #edecec;
+}
+
+/* Style for the stories section */
+.column.right .stories, 
+.column.right .recently-view {
+    width: 90%;
+    background-color: #fff;
+    margin: 10px auto;
+    margin-top: 20px;
+}
+
+.column.right .stories .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.column.right .stories .title h4 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.column.right .stories .title a {
+    text-decoration: none;
+    color: #808080;
+    font-size: 12px;;
+}
+
+.column.right .stories .story-image {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+    padding-bottom: 10px;
+}
+
+.column.right .stories .story-image .item {
+    width: 51px;
+    height: 51px;
+    padding: 1px;
+    border-radius: 50%;
+    border: 2px solid blue;
+    text-align: center;
+}
+
+.column.right .stories .story-image .item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+/* style for the recently viewed section */
+.column.right .recently-view h4 {
+    margin: 0;
+    padding: 15px 10px;
+    font-size: 14px;
+}
+
+.column.right .recently-view .images {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.column.right .recently-view .images .item {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.column.right .recently-view .images .item img {
+    max-width: 100%;
+}
+
+.column.right .recently-view .images .item span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 8px;
+    font-size: 12px;
+    background-color: #fff;
+}
+
+
+
+
+
+
+
