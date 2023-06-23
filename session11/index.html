@@ -1,30 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Array</title>
 </head>
-<body>
-    <h2>Session 11: Array</h2>
 
+<body>
+    <h1>Session 11: Array</h2>
+
+    <h2>MD01-S15-BT</h2>
     <h3>Task 1</h3>
     <p>Join elements in the array to make a string</p>
     <button onclick="joinString()">Answer</button>
-   
+
     <h3>Task 2</h3>
     <p>Reverse and join elements in the array to make a string</p>
     <button onclick="reverseAndJoinString()">Answer</button>
-    
+
     <h3>Task 3</h3>
     <p>Delete the element at index 1 from the array in 2 ways</p>
     <button onclick="deleteBySplice()">Delete with splice</button>
     <button onclick="deleteByShift()">Delete with shift</button>
-    
+
     <h3>Task 4</h3>
     <p>Calculate sum of all elements in the array</p>
     <button onclick="arraySum()">Answer</button>
 
+    <h2>MD01-S15-BTTH</h2>
+    <h3>Task 1</h3>
+    <p>User input an array, calculate sum of values at even indexes and sum of values at odd indexes</p>
+    <button onclick="sumOfInput()">Click to input</button>
+
+    <h3>Task 2</h3>
+    <p>Find the min and max value in the array user inputted</p>
+    <button onclick="minAndMax()">Answer</button>
+
+    <h3>Task 3</h3>
+    <p>Sort using sort function and without sort function</p>
+    <button onclick="sortUsingSort()">Sort using sort function</button>
+    <button onclick="sortWithoutSort()">Sort without sort function</button>
+
+    <h3>Task 4</h3>
+    <p>Find the element that appears the most in the array and print that element</p>
+    <button onclick="mostFrequent()">Answer</button>
     <script src="./app.js"></script>
+
+    <h3>Task 5</h3>
+    <p>Todo List</p>
+    <p>The original list: "Go to school at 7pm", "Read book at 12 am"</p>
+    <p>Input C/R/U/D/E to control the todo list app</p>
+    <button onclick="todoList()">Click to start</button>
 </body>
+
 </html>
