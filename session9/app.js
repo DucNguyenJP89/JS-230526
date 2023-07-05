@@ -40,16 +40,26 @@
 // for (let index=0; index < 10; index++) {
 //     document.write("Count:" + index + "<br>");
 // }
-let a = 32;
-let state = true;
-while (state) {
-    let input = Number(prompt("Enter your guess"));
-    if (input > 32) {
-        alert("Smaller!");
-    } else if (input < 32) {
-        alert("Bigger");
-    } else {
-        alert("BINGO!");
-        state = false;
-    }
+// let a = 32;
+// let state = true;
+// while (state) {
+//     let input = Number(prompt("Enter your guess"));
+//     if (input > 32) {
+//         alert("Smaller!");
+//     } else if (input < 32) {
+//         alert("Bigger");
+//     } else {
+//         alert("BINGO!");
+//         state = false;
+//     }
+// }
+
+let number1=0;
+let number2=1;
+let nextNumber;
+for (let i=0;i<20;i++) {
+    nextNumber = number1+number2;
+    number1 = number2;
+    number2= nextNumber;
+    console.log(number1);
 }
