@@ -1,69 +1,87 @@
-class User {
-    constructor(id, name, email, address, phone) {
-        this.id = id;
+// init stores
+let stores = [
+    { id: 1, name: "Milk", count: 100 }, 
+    { id: 2, name: "Yakult", count: 100 }, 
+    { id: 3, name: "Butter", count: 100, }
+];
+
+class Item {
+    constructor(name, count) {
         this.name = name;
-        this.email = email;
-        this.address = address;
-        this.phone = phone;
-        this.role = 0;
+        this.count = count;
     }
 }
 
-class Admin extends User {
-    constructor(id, name, email, address, phone) {
-        super(id, name, email, address, phone);
-        this.role = 1;
-    }
-}
+let cart = [];
 
-let admin = new Admin(1, "Suzuki", "admin@sample.com", "Tokyo, Japan", "090-1234-5678");
-let user1 = new User(2, "user1", "user1@sample.com", "Tokyo, Japan", "012-3456-7890");
-let user2 = new User(3, "user2", "user2@sample.com", "Aichi, Japan", "001-1234-5678");
-let user3 = new User(4, "user3", "user3@sample.com", "Aichi, Japan", "080-1234-5678");
-
-let users = [admin, user1, user2, user3];
-
-function user_exists(value) {
-    let index = users.findIndex(e => e.name == value);
-    if (index == -1) {
-        return false;
-    } else {
-        return index;
-    }
-}
-
-function deleteUser() {
-    let input = prompt("Enter the name to search");
-    let index = user_exists(input);
-    if (!index) {
-        console.log("No user found. Please try again");
-    } else {
-        if (users[index].role == 1) {
-            alert("No permission");
+function findMax(array) {
+    let max = array.reduce((max, item) => {
+        if (max > item.id) {
+            return max;
         } else {
-            users.splice(index,1);
-            console.log(users);
+            return item.id;
         }
+    })
+    return max;
+}
+
+function checkExists(array, value) {
+    let index = array.findIndex(e => e.name == value);
+    if (index == -1) {
+        console.log(`No item found in ${array}. Please try again`);
+    }
+    return index;
+}
+
+function renderProducts() {
+    for (index in stores) {
+        console.log(stores[index].name, "-", stores[index].count);
+    }
+    if (cart.length > 0) {
+        for (index in cart) {
+            console.log(cart[index].name, "-", cart[index].count);
+        }
+    } else {
+        console.log("No product in the cart.");
     }
 }
 
-function updateUser() {
-    let input = Number(prompt("Enter the id of the user"));
-    let index = user_exists(input);
-    if (!index) {
-        console.log("No user found. Please try again");
-    } else {
-        if (users[index].role == 1) {
-            alert("No permission");
+function addToCart() {
+    let product = prompt("Input the name of the product");
+    let index = checkExists(stores, product);
+    if (index !== -1) {
+        stores[index].count-=1;
+        // check if product exists in cart
+        cart_index = checkExists(cart, product);
+        if (cart_index !== -1) {
+            cart[cart_index].count += 1;
         } else {
-            let key = prompt("What do you want to update?");
-            if (users[index][key]) {
-                let content = prompt("Input the new value");
-                users[index][key] = content;
-                console.log(`Users updated!`, users[index]);
-            } else {
-                alert("Cannot find the key to update");
-            }
+            let item = new Item(product, 1);
+            cart.push(item);
+        }
+        renderProducts();
+    }
+}
+
+function updateCart(index) {
+
+}
+
+
+function purchase() {
+    let state = true;
+    while (state) {
+        let action = prompt("Input your action").toUpperCase();
+        switch (action) {
+            case "C":
+                addToCart();
+                break;
+            case "R":
+                renderProducts();
+                break;
+            default:
+                console.log("Invalid input. Try again, please");
+                break;
         }
     }
 }
