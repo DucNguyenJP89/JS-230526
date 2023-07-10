@@ -1,0 +1,22 @@
+.container {
+    margin: 20px 0;
+}
+
+#task2 {
+    height: 300px;
+    margin-top: 20px;
+    background-color: green;
+    text-align: center;
+}
+
+#task2 .task2-container {
+    margin: auto;
+    padding: 20px;
+}
+
+.task2-container button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 3px;
+}
+

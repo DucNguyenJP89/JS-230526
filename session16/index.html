@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>DOM&Events</title>
+</head>
+<body>
+    <div class="container">
+        <h2>S17 - BT</h3>
+        <h3>Bai 1</h3>
+        <p id="task1-text">This is a text. This is a text. This is a text</p>
+        <button id="task1-btn" onclick="controlText()">Hide text</button>
+    </div>
+    <div class="container">
+        <div id="task2">
+            <div class="task2-container">
+                <h3>Bai 2</h3>
+                <p>Click the button below to input your color</p>
+                <button onclick="changeBackgroundColor()">Change</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div id="task3">
+            <h3>Bai 3</h3>
+            <p id="task3-text">DOM la Mo hinh tai lieu cac doi tuong</p>
+            <button onclick="changeText()">Click here</button>
+        </div>
+    </div>
+    <div class="container">
+        <div id="task4">
+            <h2>Todo List</h2>
+            <div class="form">
+                <input type="text" class="text" id="task4-input">
+                <button onclick="addTask()">Submit</button>
+            </div>
+            <ul id="task4-list">
+                <li>Do homework</li>
+                <li>Clean house</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
