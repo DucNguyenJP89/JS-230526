@@ -51,7 +51,21 @@ let products = [
     price: 120000,
   },
 ];
-let listCards = [];
+
+// check if items exist in cart
+let listCards = JSON.parse(localStorage.getItem('carts')) || [];
+console.log(listCards);
+
+// if items exists, render all items in the cart on screen
+if (listCards.length > 0) { renderCart(); }
+
+// initiate the quantity number on the cart icon
+let cartQuantity = listCards.reduce((total, item) => {
+  return total + item.count;
+}, 0);
+console.log(cartQuantity);
+quantity.innerText = cartQuantity;
+
 function render() {
   products.forEach((value, key) => {
     let newDiv = document.createElement("div");
@@ -77,7 +91,7 @@ function renderCart() {
       <div>${value.name}</div>
       <div>${value.price.toLocaleString()}</div>
       <div>
-        <button onclick="addToCard(listCards,${key})">+</button>  &nbsp;${value.count}&nbsp; <button onclick="removeFromCard(${key})">-</button>
+        <button onclick="addToCard(listCards,${key})">+</button><span class="count">${value.count}</span><button onclick="removeFromCard(${key})">-</button>
       </div>
     `
     listCard.appendChild(newItem);
@@ -86,8 +100,6 @@ function renderCart() {
     total.innerText = `${totalPrice.toLocaleString()}`;
   })
 }
-
-let cartQuantity = Number(quantity.innerText);
 
 function addToCard(array, key) {
   console.log(array[key]);
@@ -100,6 +112,8 @@ function addToCard(array, key) {
   } else {
     listCards[idx].count += 1;
   }
+  //add list to local storage
+  localStorage.setItem('carts', JSON.stringify(listCards));
   // sort listCards
   listCards.sort(function(a,b) {return a.id - b.id});
   // update number on cart icon

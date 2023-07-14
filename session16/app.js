@@ -13,23 +13,35 @@ function controlText() {
 
 // js for bai 2
 function changeBackgroundColor() {
-    let color = prompt("input your favorite color");
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let color = `rgb(${r}, ${g}, ${b})`;
     let background = document.getElementById('task2');
     background.style.backgroundColor = color;
 }
 
 // js for bai 3
+let fontSize = 16;
 function changeText() {
     let text = document.getElementById('task3-text');
-    text.style.fontSize = "40px";
-    text.style.color = "red";
+    text.style.fontSize = `${fontSize}px`;
+    text.style.color = 'black';
+    fontSize+=2;
+    if (text.style.fontSize == "40px") {
+        text.style.color = "red";
+        fontSize = 16;
+    } 
 }
 
 // js for bai 4 - Todo List
 function addTask() {
     let task = document.getElementById('task4-input');
-    let newTask = `<li>${task.value}</li>`;
+    let newTask = document.createElement('li');
+    let taskNode = task.value;
+    newTask.innerText = taskNode;
+    console.log(newTask);
     let list = document.getElementById('task4-list');
-    list.innerHTML += newTask;
+    list.appendChild(newTask);
     task.value = "";
 }
