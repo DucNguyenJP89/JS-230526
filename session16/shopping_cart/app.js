@@ -60,9 +60,7 @@ console.log(listCards);
 if (listCards.length > 0) { renderCart(); }
 
 // initiate the quantity number on the cart icon
-let cartQuantity = listCards.reduce((total, item) => {
-  return total + item.count;
-}, 0);
+let cartQuantity = listCards.length;
 console.log(cartQuantity);
 quantity.innerText = cartQuantity;
 
@@ -117,7 +115,7 @@ function addToCard(array, key) {
   // sort listCards
   listCards.sort(function(a,b) {return a.id - b.id});
   // update number on cart icon
-  cartQuantity += 1;
+  cartQuantity = listCards.length;
   quantity.innerText = `${cartQuantity}`;
   console.log(cartQuantity);
   console.log(listCards);
@@ -131,8 +129,9 @@ function removeFromCard(key) {
   item.count -= 1;
   if (item.count === 0) {
     listCards.splice(key, 1);
+    cartQuantity -= 1;
   }
-  cartQuantity -= 1;
+  localStorage.setItem('carts', JSON.stringify(listCards));
   quantity.innerText = `${cartQuantity}`;
   renderCart();
 }
