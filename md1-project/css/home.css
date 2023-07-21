@@ -4,12 +4,17 @@
     box-sizing: border-box;
 }
 
+/* css for the top nav bar */
 .fb-navbar {
-    position: sticky;
+    width: 100%;
+    position: fixed;
+    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #fff;
 }
+
 
 .left-nav {
     width: 80%;
@@ -35,7 +40,7 @@
 
 .search-bar {
     margin-left: 60px;
-    width: 570px;
+    width: 580px;
     position: relative;
 }
 
@@ -64,7 +69,6 @@
 }
 
 .profile-avatar {
-
     position: relative;
 }
 
@@ -95,24 +99,123 @@
     font-size: 8px;
 }
 
+/* css for the main section of home feeds */
 .fb-main {
+    margin-top: 52px;
     display: flex;
     justify-content: space-between;
 }
 
 .fb-left-panel, .fb-home-panel, .fb-right-panel {
     height: calc(100vh - 52px);
-    background-color: #dedde1;
-}
-
-.fb-left-panel {
-    width: 25%;
+    background-color: #f1f2f5;
 }
 
 .fb-home-panel {
-    width: 575px;
+    width: 640px;
+    overflow-y: auto;
+}
+
+/* .fb-home-panel::-webkit-scrollbar {
+    display: none;
+} */
+
+.fb-home-content {
+    width: 95%;
+    margin: 0 auto;
+    height: 200vh;
+    background-color: orange;
 }
 
 .fb-right-panel {
-    width: 29%;
+    width: 25%;
 }
+
+/* css for the left panel navigation link */
+.fb-left-panel {
+    width: 22%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.fb-left-nav-link {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.fb-left-nav-item {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* adjust layout when the link is active */
+.fb-left-nav-item.active {
+    border-left: 4px solid #1877f2;
+}
+
+.fb-left-nav-item.active .fb-left-nav-wrap {
+    padding: 8px 12px;
+}
+
+.fb-left-nav-item.active .fb-left-nav-icon {
+    color: #1877f2;
+}
+
+/* css for one nav link  */
+.fb-left-nav-wrap {
+    width: 80%;
+    padding: 8px 16px;
+    margin-left: 8px;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.fb-left-nav-wrap:hover {
+    cursor: pointer;
+    background-color: #dedde1;
+    border: none;
+    border-radius: 8px;
+}
+
+.fb-left-nav-text {
+    font-size: 12px;
+}
+
+.fb-left-nav-icon {
+    width: 30px;
+    text-align: center;
+}
+
+.fb-left-nav-icon img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+/* css for the left panel footer link  */
+.fb-left-nav-footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    font-size: 10px;
+    padding-left: 24px;
+}
+
+.footer-link a {
+    text-decoration: none;
+    color: #606770;
+}
+
+.footer-link a:hover {
+    text-decoration: underline;
+}
+
+.footer-link li {
+    color: #606770;
+}
+
