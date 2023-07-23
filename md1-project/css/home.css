@@ -108,6 +108,7 @@ body {
     margin-top: 52px;
     display: flex;
     justify-content: space-between;
+    background-color: #f1f2f5;
 }
 
 .fb-left-panel, .fb-home-panel, .fb-right-panel {
@@ -208,13 +209,13 @@ body {
 }
 
 /* css for the right panel  */
-.right-panel-ads-container {
+.right-panel-ads-container, .right-panel-friends-list-container {
     margin-top: 16px;
     padding: 0 8px 0 0;
 }
 
-.right-panel-ads-container .ads-title {
-    margin: 16px 0;
+.right-panel-ads-container .ads-title, .right-panel-friends-list-container .fl-title {
+    margin: 16px 0 8px 0;
     padding: 0 8px;
     font-size: 14px;
 }
@@ -262,6 +263,23 @@ body {
     color: #606770;
 }
 
+/* css for the friends list in the right panel */
+.friend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.friend-item span {
+    font-size: 13px;
+    color: #606770;
+}
+
+.friend-avatar .home-feed-img {
+    width: 24px;
+    height: 24px;
+}
+
 /* css for the home panel  */
 .fb-home-panel {
     width: 640px;
@@ -280,7 +298,7 @@ body {
     align-items: center;
     margin: 0 auto;
     padding-top: 20px;
-    background-color: orange;
+    background-color: #f1f2f5;
 }
 
 /* template for each section  */
@@ -288,14 +306,10 @@ body {
     width: 95%;
     height: 200px;
     background-color: #fff;
+    border: 1px solid rgb(96, 103, 112, 0.3);
     border-radius: 8px;
 }
 
-.home-feeds-list {
-    width: 95%;
-    background-color: #fff;
-    border-radius: 8px;
-}
 
 /* TO DO: css for stories list section  */
 
@@ -304,6 +318,7 @@ body {
     width: 95%;
     padding: 10px;
     background-color: #fff;
+    border: 1px solid rgb(96, 103, 112, 0.3);
     border-radius: 8px;
 }
 
@@ -385,10 +400,19 @@ body {
 }
 
 /* css for the feeds list  */
+.home-feeds-list {
+    width: 95%;
+    background-color: #f1f2f5;
+    margin-bottom: 20px;
+}
+
 .home-feeds-item {
     width: 100%;
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid rgb(96, 103, 112, 0.3);
 }
 
 .feed-item-header {
@@ -492,9 +516,42 @@ body {
     padding: 8px;
     background-color: rgb(193, 198, 204, 0.3);
     border-radius: 12px;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .comment-username {
     font-weight: bold;
+}
+
+.feed-item-comments-list .add-post-comment {
+    width: 100%;
+}
+
+.add-post-comment .add-post-content {
+    width: 90%;
+    margin-right: 10px;
+}
+
+.add-post-content textarea {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(193, 198, 204, 0.2);
+    resize: none;
+}
+
+@media screen and (max-width: 1100px) {
+    .fb-left-panel {
+        width: 60px;
+        background-color: #fff;
+        border-right: 0.5px solid rgb(96, 103, 112, 0.3);
+    }
+    .fb-left-nav-footer, .fb-left-nav-text {
+        display: none;
+    }
+
+    .fb-left-nav-wrap {
+        margin-left: 2px;
+    }
 }
