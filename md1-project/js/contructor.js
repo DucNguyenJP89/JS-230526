@@ -11,3 +11,13 @@ export class User {
         this.isLogin = false;
     }
 }
+
+export class UserFeed {
+    constructor(id, userId, createdAt, updatedAt, content) {
+        this.id = id;
+        this.userId = userId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.content = content;
+    }
+}

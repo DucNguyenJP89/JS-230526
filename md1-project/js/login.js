@@ -190,7 +190,7 @@ function validateRegForm() {
 }
 
 // validate fields when click submit button
-registerSubmitBtn.addEventListener('submit', function(e) {
+registerForm.addEventListener('submit', function(e) {
     e.preventDefault();
     let isValid = validateRegForm();
     if (isValid) {
