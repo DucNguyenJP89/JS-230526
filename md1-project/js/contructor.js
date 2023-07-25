@@ -21,3 +21,14 @@ export class UserFeed {
         this.content = content;
     }
 }
+
+export class FeedComment {
+    constructor(commentId, feedId, userId, commentText, createdAt, updatedAt) {
+        this.commentId = commentId;
+        this.feedId = feedId;
+        this.userId = userId;
+        this.commentText = commentText;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+}

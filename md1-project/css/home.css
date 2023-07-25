@@ -169,7 +169,7 @@ body {
 }
 
 .fb-left-nav-text {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .fb-left-nav-icon {
@@ -468,6 +468,26 @@ body {
     margin-bottom: 0;
     padding-bottom: 8px;
     border-bottom: 1px solid #c1c6cc;
+}
+
+.feed-item-action-like, .feed-item-action-comment {
+    padding: 4px 32px;
+    color: #606770;
+}
+
+.feed-item-action-comment a {
+    text-decoration: none;
+    color: #606770;
+}
+
+.feed-item-action-like.clicked {
+    color: #1877f2;
+}
+
+.feed-item-action-like:hover, .feed-item-action-comment:hover {
+    background-color: #dedde1;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .feed-item-reactions {

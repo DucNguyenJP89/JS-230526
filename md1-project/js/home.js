@@ -1,4 +1,4 @@
-import {UserFeed} from "../js/contructor.js";
+import {UserFeed, FeedComment} from "../js/contructor.js";
 
 //get login user
 let loginUser = JSON.parse(localStorage.getItem('loginUser')) || null;
@@ -48,6 +48,7 @@ function renderUserCreatePost() {
 
 // render feeds list
 let allPosts = JSON.parse(localStorage.getItem('allPosts')) || [];
+let comments = JSON.parse(localStorage.getItem('comments')) || [];
 
 let homeFeedsList= document.getElementById('home-feeds-list');
 function renderHomeFeedsList() {
@@ -111,18 +112,22 @@ function renderHomeFeedsList() {
         let feedItemActions = document.createElement('div');
         feedItemActions.classList.add('feed-item-actions');
         feedItemActions.innerHTML = `
-            <div class="feed-item-action-like">
+            <div class="feed-item-action-like" id="like-${feedId}">
                 <i class="fa-regular fa-thumbs-up"></i>
                 <span>いいね！</span>
             </div>
             <div class="feed-item-action-comment">
-                <i class="fa-regular fa-message"></i>
-                <span>コメント</span>
+                <a href="#comment-${feedId}"><i class="fa-regular fa-message"></i>
+                <span>コメント</span></a>
             </div>
         `;
         // create children div - comments list
         let feedItemCommentsList = document.createElement('div');
         feedItemCommentsList.classList.add('feed-item-comments-list');
+        // create div for showing comments
+        let commentsListArea = document.createElement('div');
+        commentsListArea.classList.add('comments-list-area');
+        commentsListArea.setAttribute('id', `list-${feedId}`);
         // create comment input area inside comments list
         let addPostComment = document.createElement('div');
         addPostComment.classList.add('add-post-comment');
@@ -131,10 +136,11 @@ function renderHomeFeedsList() {
                 <img class="home-feed-img" src="https://picsum.photos/100" alt="user-avatar">
              </div>
             <div class="add-post-content">
-                <form id="add-comment"><textarea name="add-post-content" id="post-id" placeholder="コメントを入力"></textarea></form>
+                <form id="add-comment"><textarea name="add-post-content" id="comment-${feedId}" placeholder="コメントを入力"></textarea></form>
             </div>
         `;
         // add comment input section into comments list
+        feedItemCommentsList.appendChild(commentsListArea);
         feedItemCommentsList.appendChild(addPostComment);
         // add children divs to home feed item
         homeFeedItem.appendChild(feedItemHeader);
@@ -152,6 +158,11 @@ renderNavBarAvatar();
 renderUserLeftNav();
 renderUserCreatePost();
 renderHomeFeedsList();
+// render comments list of each post
+allPosts.forEach((post) => {
+    let feedId = Number(post.id);
+    renderCommentsList(feedId);
+})
 
 
 // // create and add new post to the list
@@ -177,9 +188,8 @@ createPostForm.addEventListener('submit', (e) => {
     // initiate value of new post
     let id = Math.floor(Math.random() * 10000000);
     let userId = loginUser.id;
-    let time = new Date();
-    let createdAt = time;
-    let updatedAt = time;
+    let createdAt = new Date();
+    let updatedAt = new Date();
     let content = createPostTextarea.value;
     // create new post
     let newPost = new UserFeed(id, userId, createdAt, updatedAt, content);
@@ -189,3 +199,68 @@ createPostForm.addEventListener('submit', (e) => {
     renderHomeFeedsList();
     createPostForm.reset();
 })
+
+// add comment to the post
+homeFeedsList.addEventListener('click', (e) => {
+    console.log(e.target.parentNode);
+    // if target is the form, then add event press enter to submit a comment
+    if (e.target.parentNode.id == "add-comment") {
+        let commentForm = e.target.parentNode;
+        let targetId = e.target.id;
+        let feedId = Number(targetId.split("-")[1]);
+        console.log(feedId);
+        commentForm.addEventListener("keyup", function(e){
+            if (e.key === "Enter") {
+                e.stopPropagation();
+                console.log(e.target.value);
+                let commentText = e.target.value.trim();
+                if (commentText !== '') {
+                    let commentId = Math.floor(Math.random() * 10000000);
+                    let userId = loginUser.id;
+                    let createdAt = new Date();
+                    let updatedAt = new Date();
+                    // create new comment object and push to the comments list
+                    let newComment = new FeedComment(commentId, feedId, userId, commentText, createdAt, updatedAt);
+                    comments.push(newComment);
+                    localStorage.setItem('comments', JSON.stringify(comments));
+                    commentForm.reset();
+                    renderCommentsList(feedId);
+                }
+            }
+        })
+    }
+});
+
+function renderCommentsList(feedId) {
+    // get the comments list area by feed id
+    let commentsListArea = document.getElementById(`list-${feedId}`);
+    // clear content of the list
+    commentsListArea.innerHTML = '';
+    // get comments by feedId
+    let feedComments = comments.filter((comment) => {
+        return comment.feedId === feedId;
+    })
+    console.log(feedComments);
+    // create layout for each comment
+    feedComments.forEach((comment) => {
+        // get the user information
+        let user = users.find((user) => user.id === comment.userId);
+        let userName = user.firstName + " " + user.lastName;
+        let commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.innerHTML = `
+            <div class="comment-item-avatar">
+                <img class="home-feed-img" src="https://picsum.photos/seed/picsum/100" alt="comment-avatar">
+            </div>
+            <div class="comment-item-content">
+                <div class="wrap">
+                    <div class="comment-username">${userName}</div>
+                    <div>${comment.commentText}</div>
+                </div>
+                <div class="comment-item-actions">
+                </div>
+            </div>
+        `;
+        commentsListArea.appendChild(commentItem);
+    })
+}
