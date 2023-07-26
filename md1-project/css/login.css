@@ -25,6 +25,7 @@ body {
 .main {
     background-color: #f0f2f5;
     min-width: 500px;
+    height: calc(100vh - 180px);
     position: relative;
 }
 
@@ -267,7 +268,8 @@ body {
 /* css for footer section */
 .page-footer {
     width: 100%;
-    height: 80px;
+    height: 180px;
+    padding-bottom: 30px;
     display: flex;
     align-items: flex-end;
 }
