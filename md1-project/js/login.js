@@ -201,7 +201,8 @@ registerForm.addEventListener('submit', function(e) {
         let password = regPassword.value;
         let birthday = regDobYear.value.concat("-", regDobMonth.value, "-", regDobDay.value);
         let gender = getGenderValue(regGender);
-        let user = new User(id, firstName, lastName, email, password, birthday, gender);
+        let joinedAt = new Date();
+        let user = new User(id, firstName, lastName, email, password, birthday, gender, joinedAt);
         users.push(user);
         localStorage.setItem('users', JSON.stringify(users));
         window.location.href = "../html/login.html";
@@ -253,7 +254,7 @@ loginForm.addEventListener('submit', (e) => {
                 loginPwError.innerText = 'Password did not match.';
             } else {
                 clearLoginError();
-                if (user.status !== '1') {
+                if (user.status !== 1) {
                     loginEmail.classList.add('error');
                     loginEmailError.innerText = 'Something wrong. Please contact your admin';
                 } else {
