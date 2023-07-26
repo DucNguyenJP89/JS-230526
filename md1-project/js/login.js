@@ -253,9 +253,15 @@ loginForm.addEventListener('submit', (e) => {
                 loginPwError.innerText = 'Password did not match.';
             } else {
                 clearLoginError();
-                user.isLogin = true;
-                localStorage.setItem('loginUser', JSON.stringify(user));
-                document.location.href = '../html/home.html';
+                if (user.status !== '1') {
+                    loginEmail.classList.add('error');
+                    loginEmailError.innerText = 'Something wrong. Please contact your admin';
+                } else {
+                    clearLoginError();
+                    user.isLogin = true;
+                    localStorage.setItem('loginUser', JSON.stringify(user));
+                    document.location.href = '../html/home.html';
+                }
             }
         }
     }

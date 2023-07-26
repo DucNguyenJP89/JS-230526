@@ -14,6 +14,7 @@ let fbLeftUserLink = document.getElementById('fb-left-user-link');
 let createPostInputArea = document.getElementById('create-post-input');
 let displayName = loginUser.firstName + ' ' + loginUser.lastName;
 let navProfileAvatar = document.getElementById('nav-profile-avatar');
+let friendsList = document.getElementById('friends-list');
 
 // render profile picture on navbar
 function renderNavBarAvatar() {
@@ -46,6 +47,25 @@ function renderUserCreatePost() {
      `
 }
 
+function renderFriendsList() {
+    users.forEach((user) => {
+        // check if it is login user
+        if (user.id !== loginUser.id) {
+            let displayName = user.firstName + ' ' + user.lastName;
+            let friendItem = document.createElement('div');
+            friendItem.classList.add('friend-item');
+            friendItem.innerHTML = `
+                <div class="friend-avatar">
+                    <img class="home-feed-img" src="https://picsum.photos/50" alt="friend-avatar">
+                </div>
+                <span class="friend-name">${displayName}</span>
+            `;
+            // add friend item to friends list
+            friendsList.appendChild(friendItem);
+        }
+    })
+}
+
 // render feeds list
 let allPosts = JSON.parse(localStorage.getItem('allPosts')) || [];
 let comments = JSON.parse(localStorage.getItem('comments')) || [];
@@ -54,8 +74,8 @@ let homeFeedsList= document.getElementById('home-feeds-list');
 function renderHomeFeedsList() {
     if (allPosts.length > 0) {
         allPosts.sort((a,b) => {
-            let prevDate = new Date(a.updatedAt);
-            let nextDate = new Date(b.updatedAt);
+            let prevDate = new Date(a.createdAt);
+            let nextDate = new Date(b.createdAt);
             return nextDate - prevDate;
         });
     }
@@ -73,7 +93,7 @@ function renderHomeFeedsList() {
         let homeFeedItem = document.createElement('div');
         //set class and id for the home feed item div
         homeFeedItem.classList.add('home-feeds-item');
-        homeFeedItem.setAttribute('id', feedId);
+        homeFeedItem.setAttribute('id', `feed-${feedId}`);
         // create children div inside home feed item - item header
         let feedItemHeader = document.createElement('div');
         feedItemHeader.classList.add('feed-item-header');
@@ -117,7 +137,7 @@ function renderHomeFeedsList() {
                 <span>いいね！</span>
             </div>
             <div class="feed-item-action-comment">
-                <a href="#comment-${feedId}"><i class="fa-regular fa-message"></i>
+                <a href="#feedId-${feedId}"><i class="fa-regular fa-message"></i>
                 <span>コメント</span></a>
             </div>
         `;
@@ -136,7 +156,7 @@ function renderHomeFeedsList() {
                 <img class="home-feed-img" src="https://picsum.photos/100" alt="user-avatar">
              </div>
             <div class="add-post-content">
-                <form id="add-comment"><textarea name="add-post-content" id="comment-${feedId}" placeholder="コメントを入力"></textarea></form>
+                <form id="add-comment-${feedId}"><textarea name="add-post-content" id="feedId-${feedId}" placeholder="コメントを入力"></textarea></form>
             </div>
         `;
         // add comment input section into comments list
@@ -157,11 +177,29 @@ function renderHomeFeedsList() {
 renderNavBarAvatar();
 renderUserLeftNav();
 renderUserCreatePost();
+renderFriendsList();
 renderHomeFeedsList();
 // render comments list of each post
 allPosts.forEach((post) => {
     let feedId = Number(post.id);
     renderCommentsList(feedId);
+})
+
+// handle display logout container
+navProfileAvatar.addEventListener('click', () => {
+    let logoutContainer = document.querySelector('.user-logout');
+    if (logoutContainer.style.display === 'none') {
+        logoutContainer.style.display = 'block';
+    } else {
+        logoutContainer.style.display = 'none';
+    }
+})
+
+// handle user logout 
+let logoutAction = document.getElementById('logout');
+logoutAction.addEventListener('click', () => {
+    localStorage.removeItem('loginUser');
+    window.location.href = '../html/home.html';
 })
 
 
@@ -200,34 +238,63 @@ createPostForm.addEventListener('submit', (e) => {
     createPostForm.reset();
 })
 
-// add comment to the post
+// add event listener to home feeds
 homeFeedsList.addEventListener('click', (e) => {
-    console.log(e.target.parentNode);
+    // console.log(e.target.parentNode.tagName);
     // if target is the form, then add event press enter to submit a comment
-    if (e.target.parentNode.id == "add-comment") {
+    if (e.target.parentNode.tagName == "FORM") {
+        console.log('form selected');
         let commentForm = e.target.parentNode;
-        let targetId = e.target.id;
-        let feedId = Number(targetId.split("-")[1]);
-        console.log(feedId);
-        commentForm.addEventListener("keyup", function(e){
-            if (e.key === "Enter") {
-                e.stopPropagation();
-                console.log(e.target.value);
-                let commentText = e.target.value.trim();
-                if (commentText !== '') {
-                    let commentId = Math.floor(Math.random() * 10000000);
-                    let userId = loginUser.id;
-                    let createdAt = new Date();
-                    let updatedAt = new Date();
-                    // create new comment object and push to the comments list
-                    let newComment = new FeedComment(commentId, feedId, userId, commentText, createdAt, updatedAt);
-                    comments.push(newComment);
-                    localStorage.setItem('comments', JSON.stringify(comments));
-                    commentForm.reset();
-                    renderCommentsList(feedId);
+        let targetId = Number(e.target.id.split("-")[1]);
+        console.log(targetId);
+        // do actions based on the form (add-comment or edit-comment)
+        if (commentForm.id === `add-comment-${targetId}`) {
+            let feedId = targetId;
+            console.log(`target feed id: ${feedId}`);
+            commentForm.addEventListener("keyup", (e) => {
+                if (e.key === "Enter") {
+                    e.stopPropagation();
+                    let commentText = e.target.value.trim();
+                    if (commentText !== '') {
+                        let commentId = Math.floor(Math.random() * 10000000);
+                        let userId = loginUser.id;
+                        let createdAt = new Date();
+                        let updatedAt = new Date();
+                        // create new comment object and push to the comments list
+                        let newComment = new FeedComment(commentId, feedId, userId, commentText, createdAt, updatedAt);
+                        comments.push(newComment);
+                        localStorage.setItem('comments', JSON.stringify(comments));
+                        commentForm.reset();
+                        renderCommentsList(feedId);
+                    }
                 }
-            }
-        })
+            })
+        } else if (commentForm.id === `edit-comment-${targetId}`) {
+            let commentId = targetId;
+            console.log(`edit comment ${commentId}`);
+            commentForm.addEventListener("keyup", (e) => {
+                if (e.key === "Enter") {
+                    e.stopPropagation();
+                    console.log('Entered');
+                    let commentText = e.target.value.trim();
+                    if (commentText !== '') {
+                        // find the index of target comment
+                        let commentIndex = comments.findIndex((comment) => comment.commentId === commentId)
+                        // update the content of comment if found
+                        if (commentIndex !== -1) {
+                            let targetComment = comments[commentIndex];
+                            console.log(targetComment);
+                            // update updatedAt and content
+                            targetComment.commentText = commentText;
+                            targetComment.updatedAt = new Date();
+                            // update comments in local storage
+                            localStorage.setItem('comments', JSON.stringify(comments));
+                            renderCommentsList(targetComment.feedId);
+                        }
+                    }
+                }
+            })
+        }
     }
 });
 
@@ -248,19 +315,63 @@ function renderCommentsList(feedId) {
         let userName = user.firstName + " " + user.lastName;
         let commentItem = document.createElement('div');
         commentItem.classList.add('comment-item');
-        commentItem.innerHTML = `
-            <div class="comment-item-avatar">
-                <img class="home-feed-img" src="https://picsum.photos/seed/picsum/100" alt="comment-avatar">
-            </div>
-            <div class="comment-item-content">
-                <div class="wrap">
-                    <div class="comment-username">${userName}</div>
-                    <div>${comment.commentText}</div>
-                </div>
-                <div class="comment-item-actions">
-                </div>
-            </div>
+        // create children div for comment-item
+        let commentItemAvatar = document.createElement('div');
+        commentItemAvatar.classList.add('comment-item-avar');
+        commentItemAvatar.innerHTML = `
+            <img class="home-feed-img" src="https://picsum.photos/100" alt="comment-avatar">
         `;
+        let commentItemContent = document.createElement('div');
+        commentItemContent.classList.add('comment-item-content');
+        commentItemContent.setAttribute('id', comment.commentId);
+        // create children div to display comment content
+        let commentItemWrap = document.createElement('div');
+        commentItemWrap.classList.add('wrap');
+        commentItemWrap.innerHTML = `
+            <div class="comment-username">${userName}</div>
+            <div>${comment.commentText}</div> 
+        `;
+        //add the chilren divs to comment item content
+        commentItemContent.appendChild(commentItemWrap);
+        // if comment user is login user, render the form and allow edit, set it as hidden
+        if (comment.userId === loginUser.id) {
+            // create edit section and set it hidden
+            let commentFormArea = document.createElement('div');
+            commentFormArea.classList.add('add-post-content');
+            let commentForm = document.createElement('form');
+            commentForm.setAttribute('id', `edit-comment-${comment.commentId}`);
+            let textArea = document.createElement('textarea');
+            textArea.setAttribute('id', `commentId-${comment.commentId}`);
+            textArea.value = comment.commentText;
+            // add elements into commentFormArea
+            commentForm.appendChild(textArea);
+            commentFormArea.appendChild(commentForm);
+            // set the form hidden
+            commentFormArea.style.display = 'none';
+            // when focus out of the form, hide it
+            textArea.addEventListener('focusout', (e) => {
+                e.stopPropagation();
+                commentItemContent.classList.remove('edit');
+                commentItemWrap.style.display = 'block';
+                commentItemEdit.style.display = 'block';
+                commentFormArea.style.display = 'none';
+            })
+            let commentItemEdit = document.createElement('a');
+            commentItemEdit.innerText = '編集';
+            commentItemEdit.addEventListener('click', (e) => {
+                e.preventDefault();
+                // adjust comment item content div
+                commentItemContent.classList.add('edit');
+                commentItemWrap.style.display = 'none';
+                commentFormArea.style.display = 'block';
+                commentItemEdit.style.display = 'none';
+            })
+            commentItemContent.appendChild(commentFormArea);
+            commentItemContent.appendChild(commentItemEdit);
+        }
+        // add comment item content to the comment item
+        commentItem.appendChild(commentItemAvatar);
+        commentItem.appendChild(commentItemContent);
         commentsListArea.appendChild(commentItem);
     })
 }

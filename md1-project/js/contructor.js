@@ -1,5 +1,5 @@
 export class User {
-    constructor(id, firstName, lastName, email, password, birthday, gender) {
+    constructor(id, firstName, lastName, email, password, birthday, gender, joinedAt) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -8,7 +8,7 @@ export class User {
         this.birthday = birthday;
         this.gender = gender;
         this.status = 1; //status: 0-inactive, 1-active, 9-blocked
-        this.isLogin = false;
+        this.joinedAt = joinedAt;
     }
 }
 
